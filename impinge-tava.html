@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Împinge Tava — Sector 6, București</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#223229;
+    --forest-dark:#182420;
+    --paper:#EDE6D6;
+    --mustard:#E2A63B;
+    --rust:#B5432E;
+    --ink:#201F1A;
+    --steel:#9AA79C;
+    --paper-line: rgba(32,31,26,0.12);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#EDE6D6;
+      --ink:#201F1A;
+    }
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--forest);
+    color:var(--ink);
+    font-family:'Inter', system-ui, -apple-system, sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .display{
+    font-family:'Anton', 'Arial Narrow', sans-serif;
+    font-weight:400;
+    letter-spacing:0.01em;
+    line-height:0.92;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+
+  /* ---- Hero ---- */
+  .hero{
+    background:
+      radial-gradient(circle at 85% -10%, rgba(226,166,59,0.16), transparent 55%),
+      var(--forest);
+    color:var(--paper);
+    padding:4.5rem 1.5rem 3.5rem;
+    position:relative;
+    overflow:hidden;
+    border-bottom:10px solid var(--mustard);
+  }
+  .hero-inner{
+    max-width:820px;
+    margin:0 auto;
+  }
+  .badge{
+    display:inline-flex;
+    align-items:center;
+    gap:0.5rem;
+    background:rgba(226,166,59,0.14);
+    border:1px solid rgba(226,166,59,0.4);
+    color:var(--mustard);
+    font-size:0.85rem;
+    padding:0.35rem 0.8rem;
+    border-radius:999px;
+    margin-bottom:1.6rem;
+  }
+  .badge svg{width:14px;height:14px;flex-shrink:0;}
+  h1.display{
+    font-size:clamp(3rem, 9vw, 6rem);
+    color:var(--paper);
+    margin:0 0 1.1rem;
+  }
+  h1.display span{color:var(--mustard);}
+  .hero p.lede{
+    font-size:1.2rem;
+    max-width:34rem;
+    color:rgba(237,230,214,0.82);
+    margin:0 0 2.2rem;
+  }
+  .hero-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.9rem;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:0.55rem;
+    padding:0.85rem 1.4rem;
+    border-radius:0.4rem;
+    font-weight:600;
+    font-size:1rem;
+    text-decoration:none;
+    border:2px solid transparent;
+    cursor:pointer;
+    transition:transform 0.15s ease, background 0.15s ease;
+  }
+  .btn:focus-visible{outline:3px solid var(--mustard); outline-offset:3px;}
+  .btn-primary{
+    background:var(--mustard);
+    color:var(--forest-dark);
+  }
+  .btn-primary:hover{transform:translateY(-1px);}
+  .btn-ghost{
+    background:transparent;
+    border-color:rgba(237,230,214,0.4);
+    color:var(--paper);
+  }
+  .btn-ghost:hover{border-color:var(--paper);}
+
+  /* ---- Section shell ---- */
+  section{
+    padding:3.5rem 1.5rem;
+  }
+  .section-inner{
+    max-width:820px;
+    margin:0 auto;
+  }
+  .paper-section{
+    background:var(--paper);
+  }
+  .kicker{
+    font-size:0.95rem;
+    color:var(--rust);
+    font-weight:600;
+    margin:0 0 0.5rem;
+  }
+  h2.display{
+    font-size:clamp(1.9rem, 4.5vw, 2.6rem);
+    margin:0 0 1.6rem;
+    color:var(--ink);
+  }
+
+  /* ---- Concept strip ---- */
+  .concept{
+    background:var(--forest-dark);
+    color:var(--paper);
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background-color:rgba(237,230,214,0.18);
+  }
+  .concept > div{
+    background:var(--forest-dark);
+    padding:2rem 1.5rem;
+    text-align:center;
+  }
+  .concept .num{
+    font-family:'Anton',sans-serif;
+    font-size:2.2rem;
+    color:var(--mustard);
+    display:block;
+    margin-bottom:0.4rem;
+  }
+  .concept p{margin:0; font-size:0.95rem; color:rgba(237,230,214,0.75);}
+
+  /* ---- Schedule board ---- */
+  .board{
+    border:1px solid var(--paper-line);
+    border-radius:0.5rem;
+    overflow:hidden;
+  }
+  .board-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0.9rem 1.3rem;
+    border-bottom:1px solid var(--paper-line);
+    font-size:1.02rem;
+  }
+  .board-row:last-child{border-bottom:none;}
+  .board-row.today{
+    background:rgba(226,166,59,0.16);
+    font-weight:700;
+  }
+  .board-row .day{font-weight:600;}
+  .board-row .hours{font-variant-numeric:tabular-nums;}
+  .board-row .hours.closed{color:var(--rust); font-weight:600;}
+
+  /* ---- Contact grid ---- */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1.2rem;
+  }
+  @media (max-width:640px){
+    .contact-grid{grid-template-columns:1fr;}
+    .concept{grid-template-columns:1fr;}
+  }
+  .card{
+    border:1px solid var(--paper-line);
+    border-radius:0.5rem;
+    padding:1.5rem;
+    background:#F6F2E8;
+  }
+  .card h3{
+    margin:0 0 0.6rem;
+    font-size:1.05rem;
+    font-weight:700;
+  }
+  .card p{margin:0 0 1rem; color:rgba(32,31,26,0.75); font-size:0.95rem;}
+  .tel-link{
+    display:inline-block;
+    font-family:'Anton',sans-serif;
+    font-size:1.5rem;
+    letter-spacing:0.02em;
+    color:var(--rust);
+    text-decoration:none;
+    border-bottom:2px dashed rgba(181,67,46,0.4);
+    padding-bottom:2px;
+    background:none;
+    border-top:0;border-left:0;border-right:0;
+    cursor:pointer;
+  }
+  .tel-link:focus-visible{outline:3px solid var(--mustard); outline-offset:4px;}
+
+  .tel-msg{
+    margin-top:0.9rem;
+    padding:0.7rem 0.9rem;
+    background:rgba(181,67,46,0.1);
+    border:1px solid rgba(181,67,46,0.3);
+    border-radius:0.4rem;
+    font-size:0.9rem;
+    color:var(--rust);
+    display:none;
+  }
+  .tel-msg.show{display:block;}
+
+  /* ---- Footer ---- */
+  footer{
+    background:var(--forest-dark);
+    color:rgba(237,230,214,0.55);
+    text-align:center;
+    padding:2rem 1.5rem;
+    font-size:0.85rem;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .btn{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      Deschis azi, până la 16:00
+    </span>
+    <h1 class="display">Împinge<br><span>tava.</span></h1>
+    <p class="lede">Mâncare gătită zilnic, la tavă, în Sectorul 6. Vii, alegi ce vrei, împingi tava mai departe — fără complicații.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&destination=Strada+1+Decembrie+1918%2C+077040%2C+Ro%C8%99u" target="_blank" rel="noopener">
+        Vezi traseul pe hartă
+      </a>
+      <a class="btn btn-ghost" href="#program">Vezi programul</a>
+    </div>
+  </div>
+</header>
+
+<section class="concept">
+  <div>
+    <span class="num">01</span>
+    <p>Alegi din vitrină ce se gătește azi</p>
+  </div>
+  <div>
+    <span class="num">02</span>
+    <p>Îți umpli tava, cântărești sau alegi porția</p>
+  </div>
+  <div>
+    <span class="num">03</span>
+    <p>Plătești la casă și mănânci sau iei la pachet</p>
+  </div>
+</section>
+
+<section class="paper-section" id="program">
+  <div class="section-inner">
+    <p class="kicker">Program</p>
+    <h2 class="display">Când ne găsești deschiși</h2>
+    <div class="board">
+      <div class="board-row"><span class="day">Luni</span><span class="hours">11:00–16:00</span></div>
+      <div class="board-row"><span class="day">Marți</span><span class="hours">11:00–16:00</span></div>
+      <div class="board-row today"><span class="day">Miercuri</span><span class="hours">11:00–16:00</span></div>
+      <div class="board-row"><span class="day">Joi</span><span class="hours">11:00–16:00</span></div>
+      <div class="board-row"><span class="day">Vineri</span><span class="hours">11:00–16:00</span></div>
+      <div class="board-row"><span class="day">Sâmbătă</span><span class="hours closed">Închis</span></div>
+      <div class="board-row"><span class="day">Duminică</span><span class="hours closed">Închis</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-inner">
+    <p class="kicker" style="color:var(--mustard);">Contact</p>
+    <h2 class="display" style="color:var(--paper);">Cum ne găsești</h2>
+    <div class="contact-grid">
+      <div class="card">
+        <h3>Adresă</h3>
+        <p>Strada 1 Decembrie 1918, 077040, Roșu — Sector 6, București</p>
+        <a class="btn btn-primary" style="width:100%;justify-content:center;" href="https://www.google.com/maps/dir/?api=1&destination=Strada+1+Decembrie+1918%2C+077040%2C+Ro%C8%99u" target="_blank" rel="noopener">
+          Deschide indicații GPS
+        </a>
+      </div>
+      <div class="card">
+        <h3>Telefon</h3>
+        <p>Pentru rezervări și comenzi la pachet.</p>
+        <button type="button" class="tel-link" id="telBtn">0721 311 607</button>
+        <div class="tel-msg" id="telMsg" role="status">Linia telefonică e încă indisponibilă — acesta e un site demo. Programul complet e mai sus.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Împinge Tava · Sector 6, București · site demo
+</footer>
+
+<script>
+  var telBtn = document.getElementById('telBtn');
+  var telMsg = document.getElementById('telMsg');
+  telBtn.addEventListener('click', function(){
+    telMsg.classList.add('show');
+  });
+</script>
+
+</body>
+</html>
